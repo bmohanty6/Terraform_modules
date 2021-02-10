@@ -12,9 +12,7 @@ variable "acl"  {
 }
 variable "bucket_tags"  {
     description = "A mapping of tags to be assigned to S3 bucket"
-    default     = {
-        Name    = "${var.bucket_name}"
-    }
+    default     = null
 }
 variable "enable_force_destroy"  {
     default     = true

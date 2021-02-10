@@ -1,3 +1,6 @@
+provider "aws" {
+    region  = "${var.aws_region}"
+}
 resource "aws_kms_key" "s3_kms_key" {
     description         = "Encryption key for ${var.bucket_name}"
     enable_key_rotation = true

@@ -8,13 +8,17 @@ variable "website-domain-main" {
     default     = null
 }
 
+locals {
+    domain_name = "${var.website-domain-main}"
+}
+
 variable "website_bucket_name" {
     description = "S3 bucket name for storing static website"
-    default     = "${var.website-domain-main}-content"
+    default     = "${local.domain_name}-content"
 }
 variable "logs_bucket_name" {
     description = "S3 bucket name for storing website logs"
-    default     = "${var.website-domain-main}-logs"
+    default     = "${var.domain_name}-logs"
 }
 
 variable "website_bucket_tags" {
