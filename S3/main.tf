@@ -22,6 +22,7 @@ resource "aws_s3_bucket" "s3_bucket" {
     acl                 = "${var.acl}"
     tags                = "${var.bucket_tags}"
     force_destroy       = "${var.enable_force_destroy}"
+    policy              = "${var.bucket_policy_json}"
 
     versioning {
         enabled = "${var.enable_versioning}"
