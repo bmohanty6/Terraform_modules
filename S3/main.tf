@@ -2,17 +2,17 @@ provider "aws" {
     region  = "${var.aws_region}"
 }
 resource "aws_kms_key" "s3_kms_key" {
-    description         = "Encryption key for ${var.bucket_name}"
+    description         = "Encryption key for ${var.s3_bucket_name}"
     enable_key_rotation = true
     
     tags = {
-        S3_bucket   = "{var.bucket_name}"
+        S3_bucket   = "{var.s3_bucket_name}"
         managed_by  = "Terraform"
     }
 }
 
 resource "aws_kms_alias" "kms_alias" {
-    name            = "alias/s3key-${var.bucket_name}"
+    name            = "alias/s3key-${var.s3_bucket_name}"
     target_key_id   = "${aws_kms_key.s3_kms_key.key_id}"
     depends_on      = [
         "aws_kms_key.s3_kms_key",
@@ -20,7 +20,7 @@ resource "aws_kms_alias" "kms_alias" {
 }
 
 resource "aws_s3_bucket" "s3_bucket" {
-    bucket              = "${var.bucket_name}"
+    bucket              = "${var.s3_bucket_name}"
     bucket_prefix       = "${var.bucket_prefix}"
     acl                 = "${var.acl}"
     tags                = "${var.bucket_tags}"

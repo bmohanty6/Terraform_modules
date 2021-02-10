@@ -12,14 +12,6 @@ locals {
     domain_name = "${var.website-domain-main}"
 }
 
-variable "website_bucket_name" {
-    description = "S3 bucket name for storing static website"
-    default     = "${local.domain_name}-content"
-}
-variable "logs_bucket_name" {
-    description = "S3 bucket name for storing website logs"
-    default     = "${var.domain_name}-logs"
-}
 
 variable "website_bucket_tags" {
     description = "Tags for S3 bucket with Website content"
