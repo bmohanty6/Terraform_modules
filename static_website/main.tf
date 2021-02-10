@@ -29,17 +29,3 @@ module "s3_bucket_website" {
         routing_rules   = "${var.website_routing_rules_json}"
     }
 }
-
-module "s3_bucket_website_redirect" {
-    source                  = "git::https://github.com/bmohanty6/Terraform_modules.git//S3?ref=master"
-    bucket_name             = "${var.website_redirect_bucket_name}"
-    acl                     = "public-read"
-    enable_force_destroy    = true
-    bucket_tags             = "${var.website_redirect_bucket_tags}"
-    bucket_policy_json      = "${var.website_redirect_bucket_policy_json}"
-    
-    logging {
-        target_bucket   = "${module.s3_bucket_website_logging.bucket_name}"
-        target_prefix   = "${var.website-domain-main}-redirect/"
-    }
-}

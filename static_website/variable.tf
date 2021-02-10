@@ -16,10 +16,6 @@ variable "logs_bucket_name" {
     description = "S3 bucket name for storing website logs"
     default     = "${var.website-domain-main}-logs"
 }
-variable "website_redirect_bucket_name" {
-    description = "S3 bucket name for redirect bucket"
-    default     = "${var.website-domain-main}-redirect"
-}
 
 variable "website_bucket_tags" {
     description = "Tags for S3 bucket with Website content"
@@ -36,15 +32,6 @@ variable "website_bucket_policy_json" {
     default     = file("website_bucket_policy.json")
 }
 
-variable "website_redirect_bucket_tags" {
-    description = "Tags for redirect S3 bucket"
-    default     = null
-}
-
-variable "website_redirect_bucket_policy_json" {
-    description = "Json policy for S3 bucket policy for redirect S3 bucket"
-    default     = file("redirect_bucket_policy.json")
-}
 variable "index_html_file" {
     description = "FIle name which will be index of website"
     default     = "index.html"
