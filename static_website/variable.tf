@@ -25,7 +25,7 @@ variable "logs_bucket_tags" {
 
 variable "website_bucket_policy_json" {
     description = "Json policy for S3 bucket policy for Website S3 bucket"
-    default     = file("website_bucket_policy.json")
+    default     = "website_bucket_policy.json"
 }
 
 variable "index_html_file" {
@@ -40,5 +40,5 @@ variable "error_html_file" {
 
 variable "website_routing_rules_json" {
     description = "Json content for wesite routing rules"
-    default     = file("website_routing_rules.json")
+    default     = "website_routing_rules.json"
 }

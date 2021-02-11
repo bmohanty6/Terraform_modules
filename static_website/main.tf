@@ -16,7 +16,7 @@ module "s3_bucket_website" {
     acl                     = "public-read"
     enable_force_destroy    = true
     bucket_tags             = "${var.website_bucket_tags}"
-    bucket_policy_json      = "${var.website_bucket_policy_json}"
+    bucket_policy_json      = file("${var.website_bucket_policy_json}")
     
     logging {
         target_bucket   = "${module.s3_bucket_website_logging.s3_bucket_name}"
@@ -26,6 +26,6 @@ module "s3_bucket_website" {
     website {
         index_document  = "${var.index_html_file}"
         error_document  = "${var.error_html_file}"
-        routing_rules   = "${var.website_routing_rules_json}"
+        routing_rules   = file("${var.website_routing_rules_json}")
     }
 }
